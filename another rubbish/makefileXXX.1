@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -lm
+EXECUTABLE = grid_processor
+OBJECT_DIRECTORY = ./obj
+SOURCE_DIRECTORY = .
+
+process_grid: main.o functions.o
+	$(CC) -o $(EXECUTABLE) $^ $(CFLAGS) $(LIBS)
+	
+$(OBJECT_DIRECTORY)/%.o: $(SOURCE_DIRECTORY)/%.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+	
+clean:
+	rm *.o grid_processor
